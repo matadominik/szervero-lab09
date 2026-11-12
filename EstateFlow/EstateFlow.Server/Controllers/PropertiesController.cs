@@ -1,7 +1,7 @@
 ﻿using EstateFlow.Application;
 using EstateFlow.Domain;
-using EstateFlow.Server.Contracts.Meters;
-using EstateFlow.Server.Contracts.Properties;
+using EstateFlow.Application.Contracts.Meters;
+using EstateFlow.Application.Contracts.Properties;
 using FluentValidation;
 using Mapster;
 using Microsoft.AspNetCore.Mvc;

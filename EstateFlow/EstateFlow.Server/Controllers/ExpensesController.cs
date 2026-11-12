@@ -1,6 +1,6 @@
 ﻿using EstateFlow.Application;
 using EstateFlow.Domain;
-using EstateFlow.Server.Contracts.Expenses;
+using EstateFlow.Application.Contracts.Expenses;
 using FluentValidation;
 using Mapster;
 using Microsoft.AspNetCore.Mvc;

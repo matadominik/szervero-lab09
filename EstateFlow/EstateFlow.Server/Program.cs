@@ -1,6 +1,6 @@
 using EstateFlow.Application;
 using EstateFlow.Server.Data;
-using EstateFlow.Server.Services;
+using EstateFlow.Application.Services;
 using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi;
@@ -24,7 +24,8 @@ builder.Services.AddDbContext<EstateFlowDbContext>(options =>
 builder.Services.AddScoped<IApplicationDbContext>(provider =>
     provider.GetRequiredService<EstateFlowDbContext>());
 
-builder.Services.AddValidatorsFromAssemblyContaining<Program>();
+// Az összes validátor felderítése és regisztrálása a DI konténerbe (scoped életciklussal)
+builder.Services.AddValidatorsFromAssemblyContaining<IApplicationDbContext>();
 
 builder.Services.AddScoped<IMeterReadingService, MeterReadingService>();
 
