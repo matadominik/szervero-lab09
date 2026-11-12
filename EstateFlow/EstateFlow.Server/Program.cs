@@ -1,3 +1,4 @@
+using EstateFlow.Application;
 using EstateFlow.Server.Data;
 using EstateFlow.Server.Services;
 using FluentValidation;
@@ -18,6 +19,10 @@ builder.Services.AddOpenApi(options =>
 
 builder.Services.AddDbContext<EstateFlowDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("EstateFlowDbConnection")));
+
+// Az interfészt kérő osztályok ugyanazt a scoped DbContext példányt kapják
+builder.Services.AddScoped<IApplicationDbContext>(provider =>
+    provider.GetRequiredService<EstateFlowDbContext>());
 
 builder.Services.AddValidatorsFromAssemblyContaining<Program>();
 

@@ -1,6 +1,6 @@
-﻿using EstateFlow.Server.Contracts.Expenses;
-using EstateFlow.Server.Data;
+﻿using EstateFlow.Application;
 using EstateFlow.Domain;
+using EstateFlow.Server.Contracts.Expenses;
 using FluentValidation;
 using Mapster;
 using Microsoft.AspNetCore.Mvc;
@@ -12,11 +12,11 @@ namespace EstateFlow.Server.Controllers
     [ApiController]
     public class ExpensesController : ControllerBase
     {
-        private readonly EstateFlowDbContext _context;
+        private readonly IApplicationDbContext _context;
         private readonly IValidator<CreateExpenseRequest> _createValidator;
         private readonly IValidator<UpdateExpenseRequest> _updateValidator;
 
-        public ExpensesController(EstateFlowDbContext context, 
+        public ExpensesController(IApplicationDbContext context, 
             IValidator<CreateExpenseRequest> createValidator,
             IValidator<UpdateExpenseRequest> updateValidator)
         {
